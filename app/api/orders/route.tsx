@@ -279,7 +279,7 @@ export async function POST(request: NextRequest) {
         // Creating the Stripe session
         const session = await stripe.checkout.sessions.create({
           customer: stripeCustomerId,
-          payment_method_types: ["card"],
+          allowed_payment_method_types: ["card"],
           line_items: stripeLineItems,
           mode: "payment",
           success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success?order=${newOrder.orderNumber}`,
